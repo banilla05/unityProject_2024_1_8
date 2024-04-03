@@ -41,7 +41,19 @@ public class Expalyer : MonoBehaviour
         {
             point = 0;                                      //충돌이 일어났을 때 포인트를 0으로 해준다
             gameObject.transform.position = new Vector3(0.0f, 3.0f, 0.0f);      //충돌했을 때 위치를 초기화
-            Debug.Log(collision.gameObject.name);           //해당 오브젝트의 이름을 생성한다
+            Debug.Log(collision.gameObject.tag);           //해당 오브젝트의 이름을 생성한다
         }
+    }
+
+
+    private void OnTriggerEnter(Collider other)             //트리거에 건드렸을 때
+    {
+        if (other.CompareTag("Item"))       //CompareTag 함수는 지언진 Tag(item) 이름을 검사한다.
+        {
+            Debug.Log("아이템과 충돌함");
+            point += 10;                    //10점 포인트를 올린다. point = point + 10dml 줄임 표현
+            Destroy(other.gameObject);      //파괴한다
+        } 
+
     }
 }
