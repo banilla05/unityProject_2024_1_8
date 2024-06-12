@@ -19,7 +19,7 @@ public class SliderFollowObject : MonoBehaviour
             //화면 좌표를 Canvas 좌표로 변환
             RectTransform canvasRect = slider.GetComponentInParent<Canvas>().GetComponent<RectTransform>();
             Vector2 cavasPos;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect.screenPos, null, out cavasPos);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screenPos, null, out cavasPos);
             //Slider UI 위치를 업데이트
             slider.transform.localPosition = cavasPos;
         }
